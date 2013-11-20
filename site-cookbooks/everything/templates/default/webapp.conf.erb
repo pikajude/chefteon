@@ -1,0 +1,11 @@
+start on (net-device-up and local-filesystems and runlevel [2345])
+stop on runlevel [016]
+respawn
+
+console none
+
+chdir <%= @root %>
+
+script
+sudo -u <%= @user %> -- ./build/webapp production >> /var/log/webapp/production.log 2>&1
+end script

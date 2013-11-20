@@ -1,1 +1,21 @@
-{"name":"data_bag_item_app_keys","json_class":"Chef::DataBagItem","chef_type":"data_bag_item","data_bag":"app","raw_data":{"id":"keys","database":{"encrypted_data":"NmWmtma62CfTdvVL7WdNlWstoXXIuYUDP0PGVFj7aok=\n","iv":"1T2/E0+GkwVRJ80FSKLbhQ==\n","version":1,"cipher":"aes-256-cbc"},"github_oauth":{"encrypted_data":"gZ1nmk9MZ+q21q9JWdR6M/d1SMHKAlUo0dWSnNxsON0bTxD0E8TzWOwFfFHo\njTM/iFRWp+AsXgA6nip5zvFADA==\n","iv":"s/UBAIsQImziiMUfLlxc4A==\n","version":1,"cipher":"aes-256-cbc"}}}
+{
+  "name": "data_bag_item_webapp_keys",
+  "json_class": "Chef::DataBagItem",
+  "chef_type": "data_bag_item",
+  "data_bag": "webapp",
+  "raw_data": {
+    "id": "keys",
+    "database": {
+      "encrypted_data": "VzoLAM4DFWAVHf+UnoByn/5A2fBBhl9+ULUXiONkALsrHk1T5MTZTextXQzO\nTc2gTvTAyvYj/HazbCK0Zgp4XA==\n",
+      "iv": "QGAqvFhMw9DtuctDvAq8YQ==\n",
+      "version": 1,
+      "cipher": "aes-256-cbc"
+    },
+    "github_oauth": {
+      "encrypted_data": "aQpBZ4Hwdmx3b1R2uSBjt/CZB/a5P0yGinnXzlDfXpmUUEPnPsiupCHO6S8v\nThSUlt2bMdPwPezooXBQFmpqqA==\n",
+      "iv": "TNpfWJOROYB1wN9RKP6PsA==\n",
+      "version": 1,
+      "cipher": "aes-256-cbc"
+    }
+  }
+}
