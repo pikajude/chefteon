@@ -18,20 +18,34 @@ LoadModule = webadmin
         Buffer     = 50
         AutoClearChanBuffer = true
         ChanModes  = +stn
+        QuitMsg    = <%= @user[:quit_message] %>
 
         LoadModule = chansaver
         LoadModule = controlpanel
         LoadModule = perform
         LoadModule = webadmin
 
-<% @networks.each do |network| %>
-        <Network <%= network[:name] %>>
+<% @networks.each do |name, network| %>
+        <Network <%= name %>>
+<% if network[:nick_alt] %>
+                AltNick    = <%= network[:nick_alt] %>
+<% end %>
+<% if network[:away_nick] %>
+                LoadModule = awaynick <%= network[:away_nick] %>
+<% end %>
                 LoadModule = chansaver
                 LoadModule = keepnick
-                LoadModule = nickserv
+<% if network[:nickserv] %>
+                LoadModule = nickserv <%= network[:nickserv] %>
+<% end %>
                 LoadModule = perform
                 LoadModule = simple_away
-
+<% if network[:ident] %>
+                Ident      = <%= network[:ident] %>
+<% end %>
+<% if network[:nick] %>
+                Nick       = <%= network[:nick] %>
+<% end %>
                 Server     = <%= network[:address] %> <%= network[:port] %> <%= network[:password] %>
 
 <% network[:channels].each do |chan| %>

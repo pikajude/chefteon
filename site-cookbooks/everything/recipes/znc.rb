@@ -32,6 +32,14 @@ keys = Chef::EncryptedDataBagItem.load("znc", "auth")
 pass = keys["pass"]
 salt = keys["salt"]
 
+irc_data = Chef::EncryptedDataBagItem.load("znc", "passwords")
+irc_data["passwords"].each do |network, pas|
+  node.default['znc']['networks'][network]['password'] = pas
+end
+irc_data["nickserv"].each do |network, ns|
+  node.default['znc']['networks'][network]['nickserv'] = ns
+end
+
 template "#{znc_home}/configs/znc.conf" do
   source "znc.conf.erb"
   variables({
