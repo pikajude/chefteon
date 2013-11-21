@@ -1,0 +1,31 @@
+server {
+  listen 80;
+  server_name <%= @host %> www.<%= @host %> <%= @other_hosts.map{|o|"#{o} www.#{o}"}.join(" ") %>;
+  return 301 https://<%= @host %>$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name www.<%= @host %> <%= @other_hosts.map{|o|"#{o} www.#{o}"}.join(" ") %>;
+  return 301 https://<%= @host %>$request_uri;
+
+  ssl_certificate <%= @cert_file %>;
+  ssl_certificate_key <%= @key_file %>;
+}
+
+server {
+  listen 443 ssl default_server;
+  server_name <%= @host %>;
+
+  ssl_certificate <%= @cert_file %>;
+  ssl_certificate_key <%= @key_file %>;
+
+  location /uploads {
+    root <%= @upload_root %>;
+    try_files $uri =404;
+  }
+
+  location / {
+    proxy_pass http://localhost:<%= @proxy_port %>;
+  }
+}

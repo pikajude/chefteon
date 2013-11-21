@@ -7,4 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "everything::webapp"
+# include_recipe "everything::webapp"
+include_recipe "everything::znc"

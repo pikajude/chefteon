@@ -1,9 +1,14 @@
+class Chef::Recipe
+  include Everything
+end
+
 include_recipe "everything::database"
 include_recipe "everything::imagemagick"
+include_recipe "everything::nginx"
 
 username = node["webapp"]["user"]
 
-deploy_path = "/srv/http/#{node["webapp"]["host"]}"
+deploy_path = site_root(node["webapp"]["host"])
 
 user username do
   comment "website owner"
@@ -38,7 +43,7 @@ execute "unzip binary" do
 end
 
 template "/etc/init/webapp.conf" do
-  source "webapp.conf.erb"
+  source "init/webapp.conf.erb"
   variables({
     :root => deploy_path,
     :user => username

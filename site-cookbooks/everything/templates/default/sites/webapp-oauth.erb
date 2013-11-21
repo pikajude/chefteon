@@ -1,0 +1,17 @@
+server {
+  listen 80;
+  server_name <%= @host %>;
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name <%= @host %>;
+
+  ssl_certificate <%= @cert_file %>;
+  ssl_certificate_key <%= @key_file %>;
+
+  location / {
+    proxy_pass http://localhost:<%= @proxy_port %>/oauth;
+  }
+}

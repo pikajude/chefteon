@@ -1,0 +1,7 @@
+location ~* (?:^|/)\. {
+    deny all;
+}
+
+location ~* (?:\.(?:bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
+    deny all;
+}

@@ -1,0 +1,43 @@
+Version = 1.2
+<Listener l>
+        Port = <%= @port %>
+        IPv4 = true
+        IPv6 = true
+        SSL = <%= @allow_ssl %>
+</Listener>
+LoadModule = partyline
+LoadModule = webadmin
+
+<User <%= @user[:account] %>>
+        Pass       = sha256#<%= @password[:hash] %>#<%= @password[:salt] %>#
+        Admin      = true
+        Nick       = <%= @user[:nick] %>
+        AltNick    = <%= @user[:nick_alt] %>
+        Ident      = <%= @user[:ident] %>
+        RealName   = <%= @user[:real_name] %>
+        Buffer     = 50
+        AutoClearChanBuffer = true
+        ChanModes  = +stn
+
+        LoadModule = chansaver
+        LoadModule = controlpanel
+        LoadModule = perform
+        LoadModule = webadmin
+
+<% @networks.each do |network| %>
+        <Network <%= network[:name] %>>
+                LoadModule = chansaver
+                LoadModule = keepnick
+                LoadModule = nickserv
+                LoadModule = perform
+                LoadModule = simple_away
+
+                Server     = <%= network[:address] %> <%= network[:port] %> <%= network[:password] %>
+
+<% network[:channels].each do |chan| %>
+                <Chan <%= chan %>>
+                </Chan>
+<% end %>
+        </Network>
+<% end %>
+</User>
