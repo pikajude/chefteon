@@ -6,14 +6,14 @@
   "raw_data": {
     "id": "keys",
     "database": {
-      "encrypted_data": "DzF5Fmg3BGVG5HRPzgF7bcEXhYsHz53QpmhWD6C6hyEw0uLxOhV7bxJwZ9m/\n4pyn2L2fhNcJZwmqyZARbNt5BA==\n",
-      "iv": "zL7PQTiNSMHpzOpxl9JIkQ==\n",
+      "encrypted_data": "MglXHYmVMmd9HixrHTQOenhN697L2ktnHxPTdwVNE2Ugjl8iE7+x8QJPag/o\npUboWLZoDoZQDWISUk/rKHkiCA==\n",
+      "iv": "F/st6SlJdu5nkXTXjLGaaw==\n",
       "version": 1,
       "cipher": "aes-256-cbc"
     },
     "github_oauth": {
-      "encrypted_data": "QQEdF2ftzCcwp3ey4Jj3OPwg27RWocy33KBzSVfvppfIwATTQgIXZCY/jqUy\nxw8AW1QnBQhRiJ4Db8jKnLPV4Q==\n",
-      "iv": "7vpdPOWwpxFoXFUQNHVYzw==\n",
+      "encrypted_data": "/muTEFT5R2J4MJx6Rjctkk69LkLHn662UU2XQz4q1/CGmdvewyPSQ2BvE2zR\n8QLmXDv0z+A/PQFZx9kAYkGqpA==\n",
+      "iv": "33tE7274sXz4wlNzm4/mEg==\n",
       "version": 1,
       "cipher": "aes-256-cbc"
     }

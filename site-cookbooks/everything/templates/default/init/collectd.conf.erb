@@ -1,0 +1,19 @@
+start on (filesystem and net-device-up IFACE=lo)
+stop on runlevel [016]
+
+env COLLECTD=/opt/collectd/sbin/collectd
+
+expect fork
+respawn
+respawn limit 10 5
+
+pre-start script
+  sudo -u <%= @user %> $COLLECTD -t
+  if [ $? -ne 0 ]; then
+    exit $?
+  fi
+end script
+
+script
+  sudo -u <%= @user %> $COLLECTD
+end script
