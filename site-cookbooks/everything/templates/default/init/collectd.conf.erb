@@ -3,7 +3,6 @@ stop on runlevel [016]
 
 env COLLECTD=/opt/collectd/sbin/collectd
 
-expect fork
 respawn
 respawn limit 10 5
 
