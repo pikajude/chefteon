@@ -1,0 +1,9 @@
+start on (filesystem and net-device-up)
+stop on runlevel [016]
+
+respawn
+respawn limit 10 5
+
+script
+  exec sudo -u znc /usr/bin/znc -d /var/lib/znc -f >>/var/log/znc.log
+end script

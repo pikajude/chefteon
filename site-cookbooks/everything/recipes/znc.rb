@@ -54,3 +54,7 @@ template "#{znc_home}/configs/znc.conf" do
   })
   owner "znc"
 end
+
+template "/etc/init/znc.conf" do
+  source "init/znc.conf.erb"
+end
