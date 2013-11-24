@@ -1,11 +1,13 @@
-start on (net-device-up and local-filesystems and runlevel [2345])
+start on runlevel [2345]
 stop on runlevel [016]
+
 respawn
+respawn limit 10 5
 
 console none
 
 chdir <%= @root %>
 
 script
-  sudo -u <%= @user %> -- ./build/webapp production >> /var/log/webapp/production.log 2>&1
+  sudo -u <%= @user %> -- ./dist/build/webapp/webapp production >> /var/log/webapp/production.log 2>&1
 end script

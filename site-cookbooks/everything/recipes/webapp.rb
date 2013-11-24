@@ -31,15 +31,17 @@ end
 oauth = Chef::EncryptedDataBagItem.load("webapp", "keys")["github_oauth"]
 
 git deploy_path do
-  repository "https://#{oauth}:x-oauth-basic@github.com/joelteon/joelt.io.hs.git"
-  reference "deploy"
+  repository "https://#{oauth}:x-oauth-basic@github.com/joelteon/joelt.io-deploy.git"
+  reference "master"
   user username
   depth 1
 end
 
 execute "unzip binary" do
   command "rm -f webapp && gunzip < webapp.gz > webapp && chmod +x webapp"
-  cwd File.join(deploy_path, "build")
+  cwd "#{deploy_path}/dist/build/webapp"
+  notifies :restart, "service[webapp]"
+  notifies :restart, "service[nginx]"
 end
 
 template "/etc/init/webapp.conf" do

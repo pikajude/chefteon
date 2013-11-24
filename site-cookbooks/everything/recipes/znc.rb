@@ -58,3 +58,8 @@ end
 template "/etc/init/znc.conf" do
   source "init/znc.conf.erb"
 end
+
+service "znc" do
+  action [:enable, :start]
+  provider Chef::Provider::Service::Upstart
+end
