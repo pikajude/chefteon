@@ -2,7 +2,21 @@ class Chef::Recipe
   include Everything
 end
 
-include_recipe "everything::database"
+require 'shellwords'
+
+rpm = value_for_platform_family(
+  ["rhel", "fedora", "suse"] => ["http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm", "pgdg-centos93"]
+)
+
+execute "add postgres RPM" do
+  command <<-EOF
+    rpm -i #{Shellwords.escape rpm[0]}
+  EOF
+  not_if "rpm -qa | grep #{Shellwords.escape rpm[1]}"
+end
+
+package "postgresql93-devel"
+
 include_recipe "everything::imagemagick"
 include_recipe "everything::nginx"
 

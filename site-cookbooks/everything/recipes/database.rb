@@ -12,7 +12,6 @@ execute "add postgres RPM" do
 end
 
 package "postgresql93-server"
-package "postgresql93-devel"
 
 execute "init database" do
   command "service postgresql-9.3 initdb"
@@ -28,6 +27,13 @@ template "/var/lib/pgsql/9.3/data/pg_hba.conf" do
   variables({
     :db_user => db_user,
     :db_name => db_name
+  })
+end
+
+template "/var/lib/pgsql/9.3/data/postgresql.conf" do
+  source "postgresql.conf.erb"
+  variables({
+    addresses: Chef::EncryptedDataBagItem.load("webapp", "hosts")["database"]
   })
 end
 
