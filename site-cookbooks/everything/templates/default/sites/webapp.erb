@@ -21,8 +21,7 @@ server {
   ssl_certificate_key <%= @key_file %>;
 
   location /uploads {
-    root <%= @upload_root %>;
-    try_files $uri =404;
+    alias <%= @upload_root %>;
   }
 
   location / {
