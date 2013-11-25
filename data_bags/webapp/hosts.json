@@ -1,0 +1,1 @@
+{"name":"data_bag_item_webapp_hosts","json_class":"Chef::DataBagItem","chef_type":"data_bag_item","data_bag":"webapp","raw_data":{"id":"hosts","database":{"encrypted_data":"rE65KzX0Qz6UBPV2SPDjKj1OktiHi7P1fsKWoHiFNjjCzrlzX2MSR5qGaMYT\nCa9p\n","iv":"bg2yKFNYDXaiJp6XMan8VA==\n","version":1,"cipher":"aes-256-cbc"}}}
