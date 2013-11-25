@@ -1,4 +1,4 @@
-im_version = "6.8.7-6"
+im_version = "6.8.7-7"
 im_dirname = "ImageMagick-#{im_version}"
 im_filename = "#{im_dirname}.tar.gz"
 im_source = "http://www.imagemagick.org/download/#{im_filename}"

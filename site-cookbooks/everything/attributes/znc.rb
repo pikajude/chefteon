@@ -18,6 +18,11 @@ default['znc']['networks'] = {
       #ghc #docker #travis #reddit-mfa #haskell-blah #go-nuts
     }
   },
+  damn: {
+    address: "localhost",
+    port: 6669,
+    channels: %w{#WriteRoom #NaNoWriMo #houseofus #sexforum}
+  },
   mountai: {
     address: "irc.mountai.net",
     nick: "otters",
