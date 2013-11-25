@@ -12,5 +12,6 @@ server {
   ssl_certificate_key <%= @key_file %>;
 
   root <%= @static_root %>;
+  expires 1y;
   try_files $uri =404;
 }
