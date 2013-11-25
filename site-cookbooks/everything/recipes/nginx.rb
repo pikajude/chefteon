@@ -71,7 +71,15 @@ template "/etc/nginx/sites-available/webapp-static" do
   })
 end
 
-%w{webapp webapp-oauth webapp-static}.each do |src|
+template "/etc/nginx/sites-available/webapp-files" do
+  source "sites/webapp-files.erb"
+  variables({
+    :host => node["webapp"]["files_host"],
+    :root => "/opt/i"
+  })
+end
+
+%w{webapp webapp-oauth webapp-static webapp-files}.each do |src|
   link "/etc/nginx/sites-enabled/#{src}" do
     to "/etc/nginx/sites-available/#{src}"
   end
