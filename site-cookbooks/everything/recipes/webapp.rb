@@ -17,7 +17,6 @@ end
 
 package "postgresql93-devel"
 
-include_recipe "everything::imagemagick"
 include_recipe "everything::nginx"
 
 username = node["webapp"]["user"]
