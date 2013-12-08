@@ -20,11 +20,6 @@ server {
   ssl_certificate <%= @cert_file %>;
   ssl_certificate_key <%= @key_file %>;
 
-  location /uploads {
-    alias <%= @upload_root %>;
-    expires 1y;
-  }
-
   location / {
     proxy_pass http://localhost:<%= @proxy_port %>;
   }

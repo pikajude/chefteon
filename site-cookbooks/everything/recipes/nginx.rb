@@ -44,7 +44,6 @@ template "/etc/nginx/sites-available/webapp" do
   variables({
     :host => node["webapp"]["host"],
     :other_hosts => node["webapp"]["other_hosts"],
-    :upload_root => site_root(node["webapp"]["host"]) + "/static/uploads",
     :cert_file => node["webapp"]["cert_path"],
     :key_file => node["webapp"]["key_path"],
     :proxy_port => 6000
