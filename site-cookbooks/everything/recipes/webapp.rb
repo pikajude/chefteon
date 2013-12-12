@@ -26,7 +26,7 @@ deploy_path = site_root(node["webapp"]["host"])
 user username do
   comment "website owner"
   system true
-  shell "/bin/false"
+  shell "/bin/bash"
 end
 
 directory "/var/log/webapp" do

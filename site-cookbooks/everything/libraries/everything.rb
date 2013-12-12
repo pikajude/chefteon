@@ -1,6 +1,6 @@
 module Everything
   def site_root name
-    File.join("/srv", "http", name, "current")
+    File.join("/srv", "http", name)
   end
 end
 
